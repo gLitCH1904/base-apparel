@@ -18,19 +18,21 @@ function checkEmail() {
   console.log(emailValue);
   if (emailValue === "") {
     errorMsg.textContent = "Email cannot be blank";
-    setError(errorMsg, errorIcon);
+    setError(errorMsg, errorIcon, email);
   } else if (!isEmail(emailValue)) {
     errorMsg.textContent = "Please provide a valid email";
-    setError(errorMsg, errorIcon);
+    setError(errorMsg, errorIcon, email);
   } else {
     errorMsg.classList.remove("active");
     errorIcon.classList.remove("active");
+    email.style.border = "2px solid hsl(0, 22%, 68%)";
   }
 }
 
-function setError(msg, icon) {
+function setError(msg, icon, inputName) {
   msg.classList.add("active");
   icon.classList.add("active");
+  inputName.style.border = "2px solid red";
 }
 
 function isEmail(email) {
